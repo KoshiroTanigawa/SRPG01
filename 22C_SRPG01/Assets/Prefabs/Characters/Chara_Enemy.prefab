@@ -14,8 +14,6 @@ GameObject:
   - component: {fileID: 5720184350371659817}
   - component: {fileID: 610575190712103648}
   - component: {fileID: 7086119851053235792}
-  - component: {fileID: 4035041556577160585}
-  - component: {fileID: 547093287285801120}
   m_Layer: 0
   m_Name: Char_Cone
   m_TagString: Untagged
@@ -328,32 +326,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &4035041556577160585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2465891573040211208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 560d01bc1980db743b209d18a6694751, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initPos_x: 0
-  initPos_z: 0
---- !u!114 &547093287285801120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2465891573040211208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24ca1753904b5434eb955298d82bd682, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4448094063567285522
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +335,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5371879566737405142}
+  - component: {fileID: 5498572661535972750}
+  - component: {fileID: 7143387196474871073}
   m_Layer: 0
   m_Name: Chara_Enemy
   m_TagString: Untagged
@@ -387,6 +361,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5498572661535972750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4448094063567285522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560d01bc1980db743b209d18a6694751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initPos_x: 0
+  initPos_z: 0
+--- !u!114 &7143387196474871073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4448094063567285522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ca1753904b5434eb955298d82bd682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7984608986003882332
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,8 +401,6 @@ GameObject:
   - component: {fileID: 258307853141501053}
   - component: {fileID: 4940077315470661300}
   - component: {fileID: 3360081929050823172}
-  - component: {fileID: 8865551548482005469}
-  - component: {fileID: 5431401287117464820}
   m_Layer: 0
   m_Name: Char_Cone (1)
   m_TagString: Untagged
@@ -715,29 +713,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &8865551548482005469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7984608986003882332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 560d01bc1980db743b209d18a6694751, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initPos_x: 0
-  initPos_z: 0
---- !u!114 &5431401287117464820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7984608986003882332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24ca1753904b5434eb955298d82bd682, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
