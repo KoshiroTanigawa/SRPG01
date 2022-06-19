@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 2992650009063623875}
   - component: {fileID: 7967739556598906378}
   - component: {fileID: 341392287998636730}
-  - component: {fileID: 5842702419511787875}
-  - component: {fileID: 7024912272376171594}
+  - component: {fileID: 2459081858186112037}
   m_Layer: 0
   m_Name: Char_Cone
   m_TagString: Untagged
@@ -229,7 +228,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 7223
+  m_VersionIndex: 7226
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -284,7 +283,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 3cd173ae4543f8745ac463237321e8db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -328,7 +327,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &5842702419511787875
+--- !u!114 &2459081858186112037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -337,20 +336,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 4959221156626868706}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 560d01bc1980db743b209d18a6694751, type: 3}
+  m_Script: {fileID: 11500000, guid: 811b54a80dc5327498bcd0ce70fd67c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initPos_x: 0
-  initPos_z: 0
---- !u!114 &7024912272376171594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4959221156626868706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24ca1753904b5434eb955298d82bd682, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  initPos_X: 0
+  initPos_Z: 0
+  isEnemy: 0
+  charaName: 
+  maxHP: 0
+  atk: 0
+  def: 0
+  attribute: 0
+  moveType: 0
+  skill: 0
+  xPos: 0
+  zPos: 0
+  nowHP: 0
+  isSkillLock: 0
+  isDefBreak: 0

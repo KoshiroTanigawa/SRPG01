@@ -12,9 +12,7 @@ GameObject:
   - component: {fileID: 4483364279600733427}
   - component: {fileID: 4483364279600733424}
   - component: {fileID: 4483364279600733425}
-  - component: {fileID: 4483364279600733430}
-  - component: {fileID: 1064483270669222651}
-  - component: {fileID: 2863166890437102069}
+  - component: {fileID: 6667106232106912833}
   m_Layer: 0
   m_Name: Char_Cubu
   m_TagString: Untagged
@@ -65,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3cd173ae4543f8745ac463237321e8db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4483364279600733430
+--- !u!114 &6667106232106912833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,40 +107,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 4483364279600733431}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 560d01bc1980db743b209d18a6694751, type: 3}
+  m_Script: {fileID: 11500000, guid: 811b54a80dc5327498bcd0ce70fd67c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initPos_x: 0
-  initPos_z: 0
---- !u!114 &1064483270669222651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4483364279600733431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24ca1753904b5434eb955298d82bd682, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &2863166890437102069
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4483364279600733431}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  initPos_X: 0
+  initPos_Z: 0
+  isEnemy: 0
+  charaName: 
+  maxHP: 0
+  atk: 0
+  def: 0
+  attribute: 0
+  moveType: 0
+  skill: 0
+  xPos: 0
+  zPos: 0
+  nowHP: 0
+  isSkillLock: 0
+  isDefBreak: 0
