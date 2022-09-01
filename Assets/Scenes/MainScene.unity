@@ -1499,8 +1499,8 @@ MonoBehaviour:
   enemyTurnImage: {fileID: 1721334460}
   gameClearImage: {fileID: 2144837343}
   gameOverImage: {fileID: 1040437346}
-  moveCancelButton: {fileID: 922605541}
-  decideButtons: {fileID: 1176840905}
+  moveCancelButton: {fileID: 1176840905}
+  decideButtons: {fileID: 922605541}
 --- !u!114 &633868011
 MonoBehaviour:
   m_ObjectHideFlags: 0

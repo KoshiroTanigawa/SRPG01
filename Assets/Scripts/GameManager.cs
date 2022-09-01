@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour
 		{
 			// 自分のターン：開始時
 			case Phase.MyTurn_Start:
+				Debug.Log("現在のフェーズは-" + nowPhase + "-");
 				// 全ブロックの選択状態を解除
 				mapManager.AllSelectionModeClear();
                 // ブロックを選択状態の表示にする
@@ -136,6 +137,7 @@ public class GameManager : MonoBehaviour
 
 			// 自分のターン：移動先選択中
 			case Phase.MyTurn_Moving:
+				Debug.Log("現在のフェーズは-" + nowPhase + "-");
 				// 敵キャラクターを選択中なら移動をキャンセルして終了
 				if (selectingChara.isEnemy)
 				{
@@ -174,6 +176,7 @@ public class GameManager : MonoBehaviour
 
 			// 自分のターン：移動後のコマンド選択中
 			case Phase.MyTurn_Command:
+				Debug.Log("現在のフェーズは-" + nowPhase + "-");
 				// 攻撃範囲のブロックを選択した時、行動するかの確認ボタンを表示する
 				if (attackableBlocks.Contains(targetBlock))
 				{
@@ -359,9 +362,9 @@ public class GameManager : MonoBehaviour
 		// 特定のモードに切り替わったタイミングで行う処理
 		switch (nowPhase)
 		{
-
 			// 自分のターン：開始時
 			case Phase.MyTurn_Start:
+				Debug.Log("現在のフェーズは-" + nowPhase + "-");
 				// 自分のターン開始時のロゴを表示
 				if (!noLogos)
 					guiManager.ShowLogo_PlayerTurn();
@@ -369,6 +372,7 @@ public class GameManager : MonoBehaviour
 
 			// 敵のターン：開始時
 			case Phase.EnemyTurn_Start:
+				Debug.Log("現在のフェーズは-" + nowPhase + "-");
 				// 敵のターン開始時のロゴを表示
 				if (!noLogos)
 					guiManager.ShowLogo_EnemyTurn();
