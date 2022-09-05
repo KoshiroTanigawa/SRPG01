@@ -8,35 +8,27 @@ public class Character : MonoBehaviour
 	// メインカメラ
 	private Camera mainCamera;
 
-	// キャラクター初期設定(インスペクタから入力)
-	[Header("初期X位置(-4～4)")]
-	public int initPos_X; // 初期X位置
-	[Header("初期Z位置(-4～4)")]
-	public int initPos_Z; // 初期Z位置
-	[Header("敵フラグ(ONで敵キャラとして扱う)")]
-	public bool isEnemy; // 敵フラグ
+	// キャラクター初期位置
+	[SerializeField] [Header("初期X位置(-4～4)")] int _startPosX;
+	[SerializeField] [Header("初期Z位置(-4～4)")] int _startPosZ;
+
+	//エネミーフラグ
+	[Header("敵フラグ(ONで敵キャラとして扱う)")] public bool _isEnemy;
+
 	// キャラクターデータ(初期ステータス)
-	[Header("キャラクター名")]
-	public string charaName; // キャラクター名
-	[Header("最大HP(初期HP)")]
-	public int maxHP; // 最大HP
-	[Header("攻撃力")]
-	public int atk; // 攻撃力
-	[Header("防御力")]
-	public int def; // 防御力
-	[Header("移動方法")]
-	public MoveType moveType; // 移動方法
+	[Header("キャラクター名")] public string charaName;
+	[Header("最大HP(初期HP)")] public int maxHP;
+	[Header("攻撃力")] public int atk;
+	[Header("防御力")] public int def;
+	[Header("移動方法")] public MoveType moveType;
 	
 
 	// ゲーム中に変化するキャラクターデータ
-	[HideInInspector]
-	public int xPos; // 現在のx座標
-	[HideInInspector]
-	public int zPos; // 現在のz座標
-	[HideInInspector]
-	public int nowHP; // 現在HP
+	[HideInInspector] public int xPos; // 現在のx座標
+	[HideInInspector] public int zPos; // 現在のz座標
+	[HideInInspector] public int nowHP; // 現在HP
 
-	// キャラクター移動方法定義(列挙型)
+	// キャラクター移動方法
 	public enum MoveType
 	{
 		Rook, // 縦・横
@@ -46,17 +38,14 @@ public class Character : MonoBehaviour
 
 	void Start()
 	{
-
-		// 初期位置に対応する座標へオブジェクトを移動させる
 		Vector3 pos = new Vector3();
-		pos.x = initPos_X; // x座標：1ブロックのサイズが1(1.0f)なのでそのまま代入
-		pos.y = 1.0f; // y座標（固定）
-		pos.z = initPos_Z; // z座標
-		transform.position = pos; // オブジェクトの座標を変更
+		pos.x = _startPosX;
+		pos.y = 1.0f;
+		pos.z = _startPosZ;
+		transform.position = pos;
 
-		// その他変数初期化
-		xPos = initPos_X;
-		zPos = initPos_Z;
+		xPos = _startPosX;
+		zPos = _startPosZ;
 		nowHP = maxHP;
 	}
 
@@ -67,19 +56,17 @@ public class Character : MonoBehaviour
 	/// <param name="targetZPos">z座標</param>
 	public void MovePosition(int targetXPos, int targetZPos)
 	{
-		// オブジェクトを移動させる
-		// 移動先座標への相対座標を取得
-		Vector3 movePos = Vector3.zero; // (0.0f, 0.0f, 0.0f)でVector3で初期化
+		Vector3 movePos = Vector3.zero; 
 		movePos.x = targetXPos - xPos; // x方向の相対距離
 		movePos.z = targetZPos - zPos; // z方向の相対距離
 
-		// DoTweenのTweenを使用して徐々に位置が変化するアニメーションを行う
+		/*
 		transform.DOMove(movePos, // 指定座標まで移動する
 				0.5f) // アニメーション時間(秒)
 			.SetEase(Ease.Linear) // イージング(変化の度合)を設定
 			.SetRelative(); // パラメータを相対指定にする
+		*/
 
-		// キャラクターデータに位置を保存
 		xPos = targetXPos;
 		zPos = targetZPos;
 	}

@@ -7,7 +7,7 @@ using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
 	private MapManager mapManager; // マップマネージャ
-	private CharactersManager charactersManager; // 全キャラクター管理クラス
+	private CharactersManager _charactersManager; // 全キャラクター管理クラス
 	private GUIManager guiManager; // GUIマネージャ
 
 	// 進行管理変数
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 	{
 		// 参照取得
 		mapManager = GetComponent<MapManager>();
-		charactersManager = GetComponent<CharactersManager>();
+		_charactersManager = GetComponent<CharactersManager>();
 		guiManager = GetComponent<GUIManager>();
 
 		// リストを初期化
@@ -55,8 +55,7 @@ public class GameManager : MonoBehaviour
 			return;
 
 		// タップ検出処理
-		if (Input.GetMouseButtonDown(0) &&
-			!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) // (←UIへのタップを検出する)
+		if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) // (←UIへのタップを検出する)
 		{// UIでない部分でタップが行われた
 		 // タップ先にあるブロックを取得して選択処理を開始する
 			GetMapBlockByTapPos();
@@ -99,13 +98,13 @@ public class GameManager : MonoBehaviour
 			case Phase.MyTurn_Start:
 				Debug.Log("現在のフェーズは-" + nowPhase + "-");
 				// 全ブロックの選択状態を解除
-				mapManager.AllSelectionModeClear();
+				mapManager.AllSelectClear();
                 // ブロックを選択状態の表示にする
                 targetBlock.SetSelectionMode(MapBlock.Highlight.Select);
 
 				// 選択した位置に居るキャラクターのデータを取得
 				var charaData =
-					charactersManager.GetCharacterDataByPos(targetBlock.xPos, targetBlock.zPos);
+					_charactersManager.GetCharacterDataPos(targetBlock.xPos, targetBlock.zPos);
 				if (charaData != null)
 				{// キャラクターが存在する
 				 // 選択中のキャラクター情報に記憶
@@ -139,7 +138,7 @@ public class GameManager : MonoBehaviour
 			case Phase.MyTurn_Moving:
 				Debug.Log("現在のフェーズは-" + nowPhase + "-");
 				// 敵キャラクターを選択中なら移動をキャンセルして終了
-				if (selectingChara.isEnemy)
+				if (selectingChara._isEnemy)
 				{
 					CancelMoving();
 					break;
@@ -155,7 +154,7 @@ public class GameManager : MonoBehaviour
 					reachableBlocks.Clear();
 
 					// 全ブロックの選択状態を解除
-					mapManager.AllSelectionModeClear();
+					mapManager.AllSelectClear();
 
 					// 移動キャンセルボタン非表示
 					guiManager.HideMoveCancelButton();
@@ -188,7 +187,7 @@ public class GameManager : MonoBehaviour
 					// 攻撃可能な場所リストを初期化する
 					attackableBlocks.Clear();
 					// 全ブロックの選択状態を解除
-					mapManager.AllSelectionModeClear();
+					mapManager.AllSelectClear();
 
 					// 攻撃先のブロックを強調表示する
 					attackBlock.SetSelectionMode(MapBlock.Highlight.Attackable);
@@ -256,7 +255,7 @@ public class GameManager : MonoBehaviour
 
 		// 攻撃対象の位置に居るキャラクターのデータを取得
 		var targetChara =
-			charactersManager.GetCharacterDataByPos(attackBlock.xPos, attackBlock.zPos);
+			_charactersManager.GetCharacterDataPos(attackBlock.xPos, attackBlock.zPos);
 		if (targetChara != null)
 		{// 攻撃対象のキャラクターが存在する
 		 // キャラクター攻撃処理
@@ -326,7 +325,7 @@ public class GameManager : MonoBehaviour
 
 		// HP0になったキャラクターを削除する
 		if (defenseChara.nowHP == 0)
-			charactersManager.DeleteCharaData(defenseChara);
+			_charactersManager.DeleteCharaData(defenseChara);
 
 		// ターン切り替え処理(遅延実行)
 		DOVirtual.DelayedCall(
@@ -398,15 +397,15 @@ public class GameManager : MonoBehaviour
 	{
 		// 生存中の敵キャラクターのリストを作成する
 		var enemyCharas = new List<Character>(); // 敵キャラクターリスト
-		foreach (Character charaData in charactersManager.characters)
+		foreach (Character charaData in _charactersManager.characters)
 		{// 全生存キャラクターから敵フラグの立っているキャラクターをリストに追加
-			if (charaData.isEnemy)
+			if (charaData._isEnemy)
 				enemyCharas.Add(charaData);
 		}
 
 		// 攻撃可能なキャラクター・位置の組み合わせの内１つをランダムに取得
 		var actionPlan = TargetFinder.GetRandomActionPlan
-			(mapManager, charactersManager, enemyCharas);
+			(mapManager, _charactersManager, enemyCharas);
 		// 組み合わせのデータが存在すれば攻撃開始
 		if (actionPlan != null)
 		{
@@ -452,7 +451,7 @@ public class GameManager : MonoBehaviour
 	public void CancelMoving()
 	{
 		// 全ブロックの選択状態を解除
-		mapManager.AllSelectionModeClear();
+		mapManager.AllSelectClear();
 		// 移動可能な場所リストを初期化する
 		reachableBlocks.Clear();
 		// 選択中のキャラクター情報を初期化する
@@ -474,9 +473,9 @@ public class GameManager : MonoBehaviour
 		bool isLose = true;
 
 		// それぞれ生きている敵・味方が存在するかをチェック
-		foreach (var charaData in charactersManager.characters)
+		foreach (var charaData in _charactersManager.characters)
 		{
-			if (charaData.isEnemy) // 敵が居るので勝利フラグOff
+			if (charaData._isEnemy) // 敵が居るので勝利フラグOff
 				isWin = false;
 			else // 味方が居るので敗北フラグOff
 				isLose = false;
@@ -501,7 +500,7 @@ public class GameManager : MonoBehaviour
 					// 移動可能な場所リストを初期化する
 					reachableBlocks.Clear();
 					// 全ブロックの選択状態を解除
-					mapManager.AllSelectionModeClear();
+					mapManager.AllSelectClear();
 				}
 			);
 

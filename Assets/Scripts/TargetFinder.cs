@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Staticでクラスを定義する
 public static class TargetFinder
 {
-	// 行動プランクラス
-	// (行動する敵キャラクター、移動先の位置、攻撃相手のキャラクターの３データを１まとめに扱う)
 	public class ActionPlan
 	{
 		public Character charaData; // 行動する敵キャラクター
@@ -46,9 +43,9 @@ public static class TargetFinder
 				{
 					// 攻撃できる相手キャラクター(プレイヤー側のキャラクター)を探す
 					Character targetChara =
-						charactersManager.GetCharacterDataByPos(attackBlock.xPos, attackBlock.zPos);
+						charactersManager.GetCharacterDataPos(attackBlock.xPos, attackBlock.zPos);
 					if (targetChara != null &&
-						!targetChara.isEnemy)
+						!targetChara._isEnemy)
 					{// 相手キャラクターが存在する
 					 // 行動プランを新規作成する
 						var newPlan = new ActionPlan();
